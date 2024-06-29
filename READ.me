@@ -1,0 +1,49 @@
+# Проект автоматизации тестирования BurgerStellar
+
+
+1. Основа для написания автотестов — фреймворк pytest.
+2. Установить зависимости — pip install -r requirements.txt.
+3. Команда для запуска — pytest -v.
+
+В файле requirements.txt:
+pytest
+selenium
+faker
+
+
+
+Файл с фиктурами conftest.py:
+driver():#запуск драйвера
+login_and_pass_to_cabinet(driver):#Авторизация и прохождение в Личный Кабинет
+
+Файл с константами constants.py
+
+
+Файл с Локаторами locators.py
+
+Файлы с тестами:
+
+В файле test_reg.py #проверки регистрации:
+test_reg_positive(self, driver): #Позитивный тест на регистрацию
+test_reg_negative_password(self,driver):# Негативный тест на ввод пароля (вводиться 4 символа)
+
+
+В файле test_login.py тесты на авторизацию:
+test_login_in_accaunt(self, driver): #Позитивный тест на авторизацию через кнопку "Войти в Аккаунт" с переходом в Личный Кабинет по клику
+test_login_via_cabinet(self,driver):#Позитивный тест на авторизацию через кнопку "Личный кабинет"
+test_login_via_registr_form(self, driver):#Позитивный тест на авторизацию через кнопку Формы Регистрации
+test_login_via_restore_button(self,driver):#Позитивный тест на авторизацию через кнопку Восстановления пароля
+
+В файле test_cabinet.py тесты для Личного Кабинета:
+test_pass_cabinet_to_constructor(self,login_and_pass_to_cabinet):#Позитивный тест на  переход из Личного Кабинета в Конструктор
+test_pass_cabinet_exit_button(self,login_and_pass_to_cabinet):#Позитивный тест на клик "выход" из личного кабинета
+test_pass_cabinet_exit_logo(self,login_and_pass_to_cabinet):#Позитивный тест на  переход из Личного Кабинета по клику ЛОГО
+
+В файле test_constructor.py - тесты в Конструкторе
+test_pass_to_sauce_constructor(self, login_and_pass_to_cabinet):#Переход в Конструкторе в раздел Соусы
+test_pass_to_fillings_constructor(self, login_and_pass_to_cabinet):#Переход в Конструкторе в раздел Начинки
+test_pass_to_bread_constructor(self, login_and_pass_to_cabinet):#Переход в Конструкторе в раздел Булки
+
+
+
+
